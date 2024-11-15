@@ -5,7 +5,7 @@ const Navbar = () => {
     return (
         <Box bg="gray.100" p={4} w={"100vw"}>
             <Flex align="center">
-                <Button mr={5} variant="ghost">Home</Button>
+                <Button mr="5" variant="ghost">Home</Button>
                 <Menu>
                     <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
                         Categories
@@ -18,10 +18,10 @@ const Navbar = () => {
                         <MenuItem>Automotive</MenuItem>
                     </MenuList>
                 </Menu>
+                <Input ml={5} placeholder="Search" bg={"gray.50"} width="300px" />
                 <Spacer />
-                <Input placeholder="Search" bg={"gray.50"} width="300px" />
-                <Spacer />
-                <Button variant="outline">Login</Button>
+                <Button mr={6} variant="outline">Login</Button>
+                <Button variant="solid">Go to cart</Button>
             </Flex>
         </Box>
     );
