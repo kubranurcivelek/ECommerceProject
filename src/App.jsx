@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { Box, Button, ChakraProvider, extendTheme, Text, withDefaultColorScheme } from "@chakra-ui/react";
+import { Box, ChakraProvider, extendTheme, withDefaultColorScheme } from "@chakra-ui/react";
 import "./App.css";
 import Navbar from "./Navbar";
+import { BrowserRouter, Route, Routes } from "react-router";
+import Products from "./Products";
 
 function App() {
-    const [count, setCount] = useState(0);
     const theme = {
         config: {
             useSystemColorMode: true,
@@ -14,11 +14,14 @@ function App() {
 
     return (
         <ChakraProvider theme={extendTheme(theme, withDefaultColorScheme({ colorScheme: "teal" }))}>
-            <Navbar />
-            <Box justifyContent={"center"}>
-                <Text fontSize={"2xl"}>{count}</Text>
-                <Button variant={"solid"} onClick={() => setCount(count + 1)}>Increment</Button>
-            </Box>
+            <BrowserRouter>
+                <Navbar />
+                <Routes>
+                    <Route index element={<Products />}></Route>
+                    <Route path="/checkout" element={<Box>Checkout</Box>}></Route>
+                    <Route path="/electronics" element={<Box>Electronics category</Box>}></Route>
+                </Routes>
+            </BrowserRouter>
         </ChakraProvider>
     );
 }

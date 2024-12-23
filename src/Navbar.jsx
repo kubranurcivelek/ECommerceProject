@@ -1,11 +1,13 @@
 import { Box, Flex, Button, Input, Spacer, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { useNavigate } from "react-router";
 
 const Navbar = () => {
+    const navigate = useNavigate();
     return (
         <Box bg="gray.100" p={4} w={"100vw"}>
             <Flex align="center">
-                <Button mr="5" variant="ghost">Home</Button>
+                <Button onClick={() => navigate("/")} mr="5" variant="ghost">Home</Button>
                 <Menu>
                     <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
                         Categories
@@ -21,7 +23,7 @@ const Navbar = () => {
                 <Input ml={5} placeholder="Search" bg={"gray.50"} width="300px" />
                 <Spacer />
                 <Button mr={6} variant="outline">Login</Button>
-                <Button variant="solid">Go to cart</Button>
+                <Button onClick={() => navigate("/checkout")} variant="solid">Go to cart</Button>
             </Flex>
         </Box>
     );
