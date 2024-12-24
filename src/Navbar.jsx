@@ -13,11 +13,11 @@ const Navbar = () => {
                         Categories
                     </MenuButton>
                     <MenuList>
-                        <MenuItem>Electronics</MenuItem>
-                        <MenuItem>Fashion</MenuItem>
-                        <MenuItem>Home & Garden</MenuItem>
-                        <MenuItem>Sports</MenuItem>
-                        <MenuItem>Automotive</MenuItem>
+                        <MenuItem onClick={() => navigate("/electronics")}>Electronics</MenuItem>
+                        <MenuItem onClick={() => navigate("/fashion")}>Fashion</MenuItem>
+                        <MenuItem onClick={() => navigate("/furniture")}>Furniture</MenuItem>
+                        <MenuItem onClick={() => navigate("/sports")}>Sports</MenuItem>
+                        <MenuItem onClick={() => navigate("/automotive")}>Automotive</MenuItem>
                     </MenuList>
                 </Menu>
                 <Input ml={5} placeholder="Search" bg={"gray.50"} width="300px" />
