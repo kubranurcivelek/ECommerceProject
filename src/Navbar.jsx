@@ -1,7 +1,8 @@
 import { Box, Flex, Button, Input, Spacer, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import PropTypes from "prop-types";
 
-const Navbar = () => {
+const Navbar = ({ onLoginClick }) => {
     return (
         <Box bg="gray.100" p={4} w={"100vw"}>
             <Flex align="center">
@@ -20,11 +21,15 @@ const Navbar = () => {
                 </Menu>
                 <Input ml={5} placeholder="Search" bg={"gray.50"} width="300px" />
                 <Spacer />
-                <Button mr={6} variant="outline">Login</Button>
+                <Button mr={6} variant="outline" onClick={onLoginClick}>Login</Button>
                 <Button variant="solid">Go to cart</Button>
             </Flex>
         </Box>
     );
+};
+
+Navbar.propTypes = {
+    onLoginClick: PropTypes.func.isRequired,
 };
 
 export default Navbar;
