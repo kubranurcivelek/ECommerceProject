@@ -1,12 +1,10 @@
 import { Box, Text, Image, Button, VStack, Flex } from "@chakra-ui/react";
-import PropTypes from "prop-types";
 
-const Cart = ({ cart, onBack, onRemove }) => {
+const Cart = () => {
+    const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
     const total = cart.reduce((acc, product) => acc + product.price, 0);
-
     return (
         <Box>
-            <Button mb={5} onClick={onBack}>Back to Products</Button>
             <VStack spacing={5} align="stretch">
                 {cart.map((product, index) => (
                     <Flex
@@ -20,7 +18,7 @@ const Cart = ({ cart, onBack, onRemove }) => {
                         <Image src={product.image} alt={product.name} boxSize="100px" objectFit="cover" />
                         <Text>{product.name}</Text>
                         <Text fontWeight="bold">${product.price}</Text>
-                        <Button colorScheme="red" onClick={() => onRemove(index)}>
+                        <Button colorScheme="red" onClick={() => {cart.filter((_, i) => i !== index)}}>
                             Remove
                         </Button>
                     </Flex>
@@ -32,12 +30,6 @@ const Cart = ({ cart, onBack, onRemove }) => {
             </Box>
         </Box>
     );
-};
-
-Cart.propTypes = {
-    cart: PropTypes.array.isRequired,
-    onBack: PropTypes.func.isRequired,
-    onRemove: PropTypes.func.isRequired, // onRemove prop eklendi
 };
 
 export default Cart;
