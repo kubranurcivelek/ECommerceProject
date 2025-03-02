@@ -1,8 +1,6 @@
 import { Box, Grid } from '@chakra-ui/react';
 import ProductCard from "./ProductCard";
-import { useState } from "react";
 import PropTypes from 'prop-types';
-
 
 const products = [
     {
@@ -28,13 +26,13 @@ const products = [
     },
 ];
 
-export default function Products({ query }) {
-    const [cart, setCart] = useState([]);
+export default function Products({ query, cart, setCart }) {
     const filteredProducts = products.filter((product) =>
         product.name.toLowerCase().includes(query.toLowerCase())
     );
     const addToCart = (product) => {
         setCart([...cart, product]);
+        sessionStorage.setItem("cart", JSON.stringify(cart));
     };
     return (
         <Box p={5}>
@@ -49,4 +47,6 @@ export default function Products({ query }) {
 
 Products.propTypes = {
     query: PropTypes.string.isRequired,
+    cart: PropTypes.array.isRequired,
+    setCart: PropTypes.func.isRequired,
 };

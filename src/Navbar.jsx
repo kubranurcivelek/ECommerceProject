@@ -59,7 +59,7 @@ const Navbar = ({ setSearchQuery }) => {
                 <Input placeholder="Password" type="password" />
               </VStack>
             </PopoverBody>
-            <Button mr={2}>
+            <Button variant="solid"colorScheme="teal" width="full">
               Login
             </Button>
           </PopoverContent>

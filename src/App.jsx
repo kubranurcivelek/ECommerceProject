@@ -6,8 +6,6 @@ import { useState } from "react";
 import Products from "./Products"
 
 const App = () => {
-
-
   const theme = {
     config: {
       useSystemColorMode: true,
@@ -16,7 +14,8 @@ const App = () => {
   };
 
   const [searchQuery, setSearchQuery] = useState("");
-
+  const [cart, setCart] = useState([]);
+  
   return (
     <ChakraProvider theme={extendTheme(theme)}>
       <BrowserRouter>
@@ -24,8 +23,8 @@ const App = () => {
           setSearchQuery={(q) => setSearchQuery(q)} 
         />
         <Routes>
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/" element={<Products query={searchQuery} />} />
+          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
+          <Route path="/" element={<Products query={searchQuery} cart={cart} setCart={setCart} />} />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
